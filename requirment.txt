@@ -8,3 +8,6 @@ viberant
 second comment
 dark mode
 video calls
+camera added
+gallery added
+type core
