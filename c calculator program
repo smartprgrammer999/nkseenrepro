@@ -1,0 +1,92 @@
+#include<iostream.h>
+#include<conio.h>
+//using namespace std;
+class calculator
+{
+	private:
+		double a,b,c;
+		char ch,op,op1;
+	public:
+		calculator()
+		{
+			ch='y';
+			op1='n';
+		}
+	       void calc()
+		{
+		       while(1)
+			{  if(!(ch=='='||ch=='y'))
+			    break;
+
+			    if(ch=='=')
+			    input1();
+			    else
+				input();
+				switch(op)
+				{
+					case '+':
+						c=add();
+						cout<<a<<"+"<<b<<"="<<c<<endl;
+						break;
+					case '-':
+						c=sub();
+						cout<<a<<"-"<<b<<"="<<c<<endl;
+						break;
+					case '*':
+						c=multi();
+						cout<<a<<"*"<<b<<"="<<c<<endl;
+						break;
+					case '/':
+						c=div();
+						cout<<a<<"/"<<b<<"="<<c<<endl;
+						break;
+					default:
+						cout<<"invalied operator..try again!"<<endl;
+				}
+				//cout<<"do yo want to perform other calculation:";
+				cin>>ch;
+			}
+		}
+		void input1()
+		{ clrscr();
+			a=c;
+			cout<<a;
+			cin>>op;
+			cin>>b;
+		}
+		void input()
+		{
+		clrscr();
+			cin>>a;
+			cin>>op;
+			cin>>b;
+		}
+		float add()
+		{
+			float c=a+b;
+			return c;
+		}
+		float sub()
+		{
+			float c=a-b;
+			return(c);
+		}
+		float multi()
+		{
+			float c=a*b;
+			return(c);
+		}
+		float div()
+		{
+			float c=a/b;
+			return(c);
+		}
+
+};
+void main()
+{clrscr();
+	calculator operation;
+	cout<<"\t\t\t<CALCULATOR>"<<endl;
+	operation.calc();
+	getch();
+}
