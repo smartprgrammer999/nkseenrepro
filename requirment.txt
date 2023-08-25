@@ -11,3 +11,7 @@ video calls
 camera added
 gallery added
 type core
+
+suspended options
+we working with project
+we working with fumctions
