@@ -1,0 +1,20 @@
+package testprogram;
+import java.io.*;
+public class InputSingleCharacter {
+
+	public static void main(String[] args)throws IOException {
+	 
+	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	System.out.println("Enter employee Id:");
+	int id=Integer.parseInt(br.readLine());
+	System.out.println("Enter employee gender:");
+	char gen=(char)br.read();
+	br.skip(2);
+	System.out.println("Enter employee name:");
+	String name=br.readLine();
+   System.out.println("Id="+id+"Gender="+gen+"Name="+name);
+	
+	 
+	}
+
+}
