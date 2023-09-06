@@ -1,6 +1,7 @@
 package com.jpaexample.JpaTest1.carservice;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,13 +43,16 @@ public class CarService implements CarServiceImp{
 		 cardao.delete(var);
 		
 	}
+
 	//@SuppressWarnings("deprecation")
 	@Override
 	public Car getCar(Integer carno) {
-		Car obj=cardao.getOne(carno);
-		 
-		return obj;	 
+		return cardao.getOne(carno);	 
 	}
-	
+ 
+
+	public Optional<Car> checkRecord(Integer carno) {
+		return cardao.findById(carno);
+	}
 	 
 }

@@ -1,8 +1,11 @@
 package com.jpaexample.JpaTest1.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,12 +32,18 @@ public List<Car> getCars()
 return this.carservice.getCars();
 
 }
-@GetMapping(path="/car/{carno}")
-public Car getCar(@PathVariable Integer carno)
+@GetMapping("/car/{carno}")
+public ResponseEntity<Car> getCar(@PathVariable Integer carno)
+{ 
+Optional<Car> car=((CarService) this.carservice).checkRecord(carno);
+if(car.isPresent())
 {
-	Car obj1=this.carservice.getCar(carno);
-	System.out.println("nikesh="+obj1);
-return obj1;	
+	return new ResponseEntity<Car>(car.get(),HttpStatus.FOUND);
+}
+else
+{
+	return new ResponseEntity<Car>(car.get(),HttpStatus.NOT_FOUND);
+}
 }
 @PostMapping("/car")
 public Car addCar(@RequestBody Car car) 
